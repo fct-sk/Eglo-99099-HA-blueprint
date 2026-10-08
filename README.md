@@ -1,34 +1,85 @@
 # EGLO 99099 HA Blueprint
 
-Home Assistant automation blueprint for the **EGLO 99099 / ERCU_3groups_Zm** remote when used through Zigbee2MQTT.
+Home Assistant blueprint for the **EGLO 99099 / ERCU_3groups_Zm** remote when used through Zigbee2MQTT.
 
-It lets you independently assign Home Assistant actions to the supported MQTT actions for groups 1, 2 and 3.
+The blueprint maps the remote's MQTT `action` together with `action_group` 1, 2, or 3 to configurable Home Assistant actions.
 
-## Install
+## Import
 
-Import the blueprint into Home Assistant using:
+Use this Raw URL in **Settings → Automations & scenes → Blueprints → Import Blueprint**:
 
 `https://raw.githubusercontent.com/fct-sk/Eglo-99099-HA-blueprint/main/blueprints/automation/eglo_99099_button_mapper.yaml`
 
-Then go to **Settings → Automations & scenes → Blueprints** and create an automation from the blueprint.
+Default MQTT topic:
 
-## Defaults
+`zigbee2mqtt1/EgloRemote`
 
-- Zigbee2MQTT base topic: `zigbee2mqtt1`
-- Remote friendly name: `EgloRemote`
-- MQTT topic: `zigbee2mqtt1/EgloRemote`
+The topic can be changed when creating the automation.
 
-Both values can be changed when creating the automation.
+## How the remote is represented
 
-## Supported actions
+On this EGLO remote, buttons **1 / 2 / 3** select the active group. Zigbee2MQTT does not publish the group-selection press itself as a separate action; instead, the following command is published with the selected group in `action_group`.
 
-`on`, `off`, `red`, `red_long`, `refresh`, `refresh_long`, `refresh_colored`, `refresh_colored_long`, `blue`, `blue_long`, `green`, `green_long`, `brightness_step_up`, `brightness_step_down`, `brightness_move_to_level`, `color_temperature_step_up`, `color_temperature_step_down`, `color_temperature_move`, `recall_1`, `recall_1_long`, `recall_2`, `recall_2_long`.
+Examples:
 
-The physical group-selection / pairing buttons are not mapped because they are used by the remote for direct pairing with EGLO lights rather than being exposed as ordinary network actions.
+```json
+{"action":"on","action_group":1}
+{"action":"brightness_step_up","action_group":2}
+{"action":"recall_1","action_group":3}
+```
 
-## Groups
+The blueprint therefore does not need separate triggers for buttons 1/2/3. It matches `action` + `action_group`.
 
-The MQTT payload contains `action_group` values **1**, **2**, or **3**. The blueprint routes each action to the corresponding Group 1, Group 2, or Group 3 configuration.
+Release messages where `action` is missing/null are ignored.
+
+## Verified action map
+
+| Function | Zigbee2MQTT action |
+|---|---|
+| ON | `on` |
+| OFF | `off` |
+| Red | `red` |
+| Red — long press | `red_long` |
+| Green | `green` |
+| Green — long press | `green_long` |
+| Blue | `blue` |
+| Blue — long press | `blue_long` |
+| Refresh / white | `refresh` |
+| Refresh / white — long press | `refresh_long` |
+| Colored refresh | `refresh_colored` |
+| Colored refresh — long press | `refresh_colored_long` |
+| Brightness + | `brightness_step_up` |
+| Brightness − | `brightness_step_down` |
+| Brightness — set level | `brightness_move_to_level` |
+| Color temperature + | `color_temperature_step_up` |
+| Color temperature − | `color_temperature_step_down` |
+| Color temperature — move | `color_temperature_move` |
+| Favorite / Heart 1 | `recall_1` |
+| Favorite / Heart 1 — long press | `recall_1_long` |
+| Favorite / Heart 2 | `recall_2` |
+| Favorite / Heart 2 — long press | `recall_2_long` |
+
+For the verified EGLO 99099 payloads, the remote also exposes:
+
+- `action_level` for `brightness_move_to_level`
+- `action_color_temperature` for `color_temperature_move`
+- `action_step_size` for brightness step events
+- `action_color_temperature_delta` for color-temperature step events
+- `action_transition_time` for move events
+
+The current blueprint passes these events to the user-selected Home Assistant actions. The raw payload values remain available in the automation trace/template context as `trigger.payload_json`.
+
+## Group behavior
+
+Once a group is selected on the physical remote, every supported action carries that group's number in `action_group`.
+
+For example:
+
+```text
+2 → ON             → on + group 2
+2 → large sun      → brightness_step_up + group 2
+2 → heart 1        → recall_1 + group 2
+```
 
 ## Requirements
 
@@ -36,6 +87,8 @@ The MQTT payload contains `action_group` values **1**, **2**, or **3**. The blue
 - MQTT integration configured.
 - Zigbee2MQTT publishing the EGLO remote messages.
 
-## Device documentation
+## Source
+
+Device documentation:
 
 https://www.zigbee2mqtt.io/devices/99099.html
