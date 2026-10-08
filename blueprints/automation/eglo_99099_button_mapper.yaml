@@ -368,7 +368,7 @@ blueprint:
             action:
 variables:
   eglo_action: "{{ trigger.payload_json.get('action') }}"
-  eglo_group: "{{ trigger.payload_json.get('action_group', 0) | int(0) }}"
+  eglo_group: "{{ (trigger.payload_json.get('action_group', 0) | int(0)) }}"
 
 triggers:
   - trigger: mqtt
