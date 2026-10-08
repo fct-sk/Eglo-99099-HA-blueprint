@@ -31,112 +31,112 @@ blueprint:
           name: "ON"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_off:
           name: "OFF"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_red:
           name: "Red"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_red_long:
           name: "Red — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_refresh:
           name: "Refresh / white"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_refresh_long:
           name: "Refresh / white — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_refresh_colored:
           name: "Refresh colored"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_refresh_colored_long:
           name: "Refresh colored — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_blue:
           name: "Blue"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_blue_long:
           name: "Blue — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_green:
           name: "Green"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_green_long:
           name: "Green — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_brightness_step_up:
           name: "Brightness +"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_brightness_step_down:
           name: "Brightness −"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_brightness_move_to_level:
           name: "Brightness — move"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_color_temperature_step_up:
           name: "Color temperature +"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_color_temperature_step_down:
           name: "Color temperature −"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_color_temperature_move:
           name: "Color temperature — move"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_recall_1:
           name: "Recall 1"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_recall_1_long:
           name: "Recall 1 — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_recall_2:
           name: "Recall 2"
           default: []
           selector:
-              action: {}
+            action: {}
         g1_recall_2_long:
           name: "Recall 2 — long press"
           default: []
           selector:
-              action: {}
+            action: {}
     group_2:
       name: Group 2
       icon: mdi:numeric-2-circle
@@ -146,112 +146,112 @@ blueprint:
           name: "ON"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_off:
           name: "OFF"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_red:
           name: "Red"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_red_long:
           name: "Red — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_refresh:
           name: "Refresh / white"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_refresh_long:
           name: "Refresh / white — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_refresh_colored:
           name: "Refresh colored"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_refresh_colored_long:
           name: "Refresh colored — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_blue:
           name: "Blue"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_blue_long:
           name: "Blue — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_green:
           name: "Green"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_green_long:
           name: "Green — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_brightness_step_up:
           name: "Brightness +"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_brightness_step_down:
           name: "Brightness −"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_brightness_move_to_level:
           name: "Brightness — move"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_color_temperature_step_up:
           name: "Color temperature +"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_color_temperature_step_down:
           name: "Color temperature −"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_color_temperature_move:
           name: "Color temperature — move"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_recall_1:
           name: "Recall 1"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_recall_1_long:
           name: "Recall 1 — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_recall_2:
           name: "Recall 2"
           default: []
           selector:
-              action: {}
+            action: {}
         g2_recall_2_long:
           name: "Recall 2 — long press"
           default: []
           selector:
-              action: {}
+            action: {}
     group_3:
       name: Group 3
       icon: mdi:numeric-3-circle
@@ -261,112 +261,112 @@ blueprint:
           name: "ON"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_off:
           name: "OFF"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_red:
           name: "Red"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_red_long:
           name: "Red — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_refresh:
           name: "Refresh / white"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_refresh_long:
           name: "Refresh / white — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_refresh_colored:
           name: "Refresh colored"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_refresh_colored_long:
           name: "Refresh colored — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_blue:
           name: "Blue"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_blue_long:
           name: "Blue — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_green:
           name: "Green"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_green_long:
           name: "Green — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_brightness_step_up:
           name: "Brightness +"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_brightness_step_down:
           name: "Brightness −"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_brightness_move_to_level:
           name: "Brightness — move"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_color_temperature_step_up:
           name: "Color temperature +"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_color_temperature_step_down:
           name: "Color temperature −"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_color_temperature_move:
           name: "Color temperature — move"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_recall_1:
           name: "Recall 1"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_recall_1_long:
           name: "Recall 1 — long press"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_recall_2:
           name: "Recall 2"
           default: []
           selector:
-              action: {}
+            action: {}
         g3_recall_2_long:
           name: "Recall 2 — long press"
           default: []
           selector:
-              action: {}
+            action: {}
 triggers:
   - trigger: mqtt
     topic: !input mqtt_topic
