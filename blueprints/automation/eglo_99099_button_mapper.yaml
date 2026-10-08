@@ -16,10 +16,10 @@ blueprint:
       default: EgloRemote
       selector:
         text:
-    mqtt_base_topic:
-      name: Zigbee2MQTT base topic
-      description: The base MQTT topic used by your Zigbee2MQTT instance.
-      default: zigbee2mqtt1
+    mqtt_topic:
+      name: MQTT topic
+      description: Complete MQTT topic published by Zigbee2MQTT for the remote.
+      default: zigbee2mqtt1/EgloRemote
       selector:
         text:
     group_1:
@@ -367,13 +367,9 @@ blueprint:
           default: []
           selector:
             action:
-trigger_variables:
-  mqtt_base_topic: !input mqtt_base_topic
-  friendly_name: !input friendly_name
-
 triggers:
   - trigger: mqtt
-    topic: "{{ mqtt_base_topic }}/{{ friendly_name }}"
+    topic: !input mqtt_topic
 
 actions:
   - choose:
