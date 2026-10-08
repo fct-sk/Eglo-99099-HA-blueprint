@@ -432,11 +432,48 @@ actions:
               - conditions:
                   - condition: template
                     value_template: "{{ eglo_action == 'brightness_step_up' }}"
-                sequence: !input g1_brightness_step_up
+                sequence:
+                  - choose:
+                      - conditions:
+                          - condition: state
+                            entity_id: light.svetlokuchyna_l1
+                            state: "off"
+                        sequence:
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.svetlokuchyna_l1
+                      - conditions:
+                          - condition: state
+                            entity_id: light.svetlokuchyna_l1
+                            state: "on"
+                          - condition: state
+                            entity_id: light.svetlokuchyna_l2
+                            state: "off"
+                        sequence:
+                          - action: light.turn_on
+                            target:
+                              entity_id: light.svetlokuchyna_l2
               - conditions:
                   - condition: template
                     value_template: "{{ eglo_action == 'brightness_step_down' }}"
-                sequence: !input g1_brightness_step_down
+                sequence:
+                  - choose:
+                      - conditions:
+                          - condition: state
+                            entity_id: light.svetlokuchyna_l2
+                            state: "on"
+                        sequence:
+                          - action: light.turn_off
+                            target:
+                              entity_id: light.svetlokuchyna_l2
+                      - conditions:
+                          - condition: state
+                            entity_id: light.svetlokuchyna_l1
+                            state: "on"
+                        sequence:
+                          - action: light.turn_off
+                            target:
+                              entity_id: light.svetlokuchyna_l1
               - conditions:
                   - condition: template
                     value_template: "{{ eglo_action == 'brightness_move_to_level' }}"
