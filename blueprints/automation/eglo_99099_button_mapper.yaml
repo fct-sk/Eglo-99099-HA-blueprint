@@ -1,29 +1,26 @@
 blueprint:
   name: EGLO 99099 — 3-Group Button Mapper
   description: >-
-    Universal button mapper for the EGLO 99099 / ERCU_3groups_Zm remote
-    used through Zigbee2MQTT. Select what each supported action does
-    independently for groups 1, 2 and 3.
+    Map every supported EGLO 99099 / ERCU_3groups_Zm action to one or more
+    Home Assistant actions. The active remote group is taken from
+    action_group (1, 2 or 3). The blueprint ignores release messages with
+    no action.
   domain: automation
   author: ChatGPT
   homeassistant:
     min_version: 2024.6.0
-  source_url: https://www.zigbee2mqtt.io/devices/99099.html
+  source_url: https://github.com/fct-sk/Eglo-99099-HA-blueprint
   input:
-    friendly_name:
-      name: Friendly name
-      description: The Zigbee2MQTT friendly name of the remote, for example EgloRemote.
-      default: EgloRemote
-      selector:
-        text: {}
     mqtt_topic:
       name: MQTT topic
-      description: Complete MQTT topic published by Zigbee2MQTT for the remote.
+      description: Complete MQTT topic published by Zigbee2MQTT for the EGLO remote.
       default: zigbee2mqtt1/EgloRemote
       selector:
         text: {}
+
     group_1:
       name: Group 1
+      description: Actions used when the EGLO remote has Group 1 selected.
       icon: mdi:numeric-1-circle
       collapsed: true
       input:
@@ -47,6 +44,26 @@ blueprint:
           default: []
           selector:
             action:
+        g1_green:
+          name: "Green"
+          default: []
+          selector:
+            action:
+        g1_green_long:
+          name: "Green — long press"
+          default: []
+          selector:
+            action:
+        g1_blue:
+          name: "Blue"
+          default: []
+          selector:
+            action:
+        g1_blue_long:
+          name: "Blue — long press"
+          default: []
+          selector:
+            action:
         g1_refresh:
           name: "Refresh / white"
           default: []
@@ -67,26 +84,6 @@ blueprint:
           default: []
           selector:
             action:
-        g1_blue:
-          name: "Blue"
-          default: []
-          selector:
-            action:
-        g1_blue_long:
-          name: "Blue — long press"
-          default: []
-          selector:
-            action:
-        g1_green:
-          name: "Green"
-          default: []
-          selector:
-            action:
-        g1_green_long:
-          name: "Green — long press"
-          default: []
-          selector:
-            action:
         g1_brightness_step_up:
           name: "Brightness +"
           default: []
@@ -98,7 +95,7 @@ blueprint:
           selector:
             action:
         g1_brightness_move_to_level:
-          name: "Brightness — move"
+          name: "Brightness — set to remote level (1–254)"
           default: []
           selector:
             action:
@@ -113,32 +110,33 @@ blueprint:
           selector:
             action:
         g1_color_temperature_move:
-          name: "Color temperature — move"
+          name: "Color temperature — move to remote value"
           default: []
           selector:
             action:
         g1_recall_1:
-          name: "Recall 1"
+          name: "Favorite 1 / Heart 1"
           default: []
           selector:
             action:
         g1_recall_1_long:
-          name: "Recall 1 — long press"
+          name: "Favorite 1 / Heart 1 — long press"
           default: []
           selector:
             action:
         g1_recall_2:
-          name: "Recall 2"
+          name: "Favorite 2 / Heart 2"
           default: []
           selector:
             action:
         g1_recall_2_long:
-          name: "Recall 2 — long press"
+          name: "Favorite 2 / Heart 2 — long press"
           default: []
           selector:
             action:
     group_2:
       name: Group 2
+      description: Actions used when the EGLO remote has Group 2 selected.
       icon: mdi:numeric-2-circle
       collapsed: true
       input:
@@ -162,6 +160,26 @@ blueprint:
           default: []
           selector:
             action:
+        g2_green:
+          name: "Green"
+          default: []
+          selector:
+            action:
+        g2_green_long:
+          name: "Green — long press"
+          default: []
+          selector:
+            action:
+        g2_blue:
+          name: "Blue"
+          default: []
+          selector:
+            action:
+        g2_blue_long:
+          name: "Blue — long press"
+          default: []
+          selector:
+            action:
         g2_refresh:
           name: "Refresh / white"
           default: []
@@ -182,26 +200,6 @@ blueprint:
           default: []
           selector:
             action:
-        g2_blue:
-          name: "Blue"
-          default: []
-          selector:
-            action:
-        g2_blue_long:
-          name: "Blue — long press"
-          default: []
-          selector:
-            action:
-        g2_green:
-          name: "Green"
-          default: []
-          selector:
-            action:
-        g2_green_long:
-          name: "Green — long press"
-          default: []
-          selector:
-            action:
         g2_brightness_step_up:
           name: "Brightness +"
           default: []
@@ -213,7 +211,7 @@ blueprint:
           selector:
             action:
         g2_brightness_move_to_level:
-          name: "Brightness — move"
+          name: "Brightness — set to remote level (1–254)"
           default: []
           selector:
             action:
@@ -228,32 +226,33 @@ blueprint:
           selector:
             action:
         g2_color_temperature_move:
-          name: "Color temperature — move"
+          name: "Color temperature — move to remote value"
           default: []
           selector:
             action:
         g2_recall_1:
-          name: "Recall 1"
+          name: "Favorite 1 / Heart 1"
           default: []
           selector:
             action:
         g2_recall_1_long:
-          name: "Recall 1 — long press"
+          name: "Favorite 1 / Heart 1 — long press"
           default: []
           selector:
             action:
         g2_recall_2:
-          name: "Recall 2"
+          name: "Favorite 2 / Heart 2"
           default: []
           selector:
             action:
         g2_recall_2_long:
-          name: "Recall 2 — long press"
+          name: "Favorite 2 / Heart 2 — long press"
           default: []
           selector:
             action:
     group_3:
       name: Group 3
+      description: Actions used when the EGLO remote has Group 3 selected.
       icon: mdi:numeric-3-circle
       collapsed: true
       input:
@@ -277,6 +276,26 @@ blueprint:
           default: []
           selector:
             action:
+        g3_green:
+          name: "Green"
+          default: []
+          selector:
+            action:
+        g3_green_long:
+          name: "Green — long press"
+          default: []
+          selector:
+            action:
+        g3_blue:
+          name: "Blue"
+          default: []
+          selector:
+            action:
+        g3_blue_long:
+          name: "Blue — long press"
+          default: []
+          selector:
+            action:
         g3_refresh:
           name: "Refresh / white"
           default: []
@@ -297,26 +316,6 @@ blueprint:
           default: []
           selector:
             action:
-        g3_blue:
-          name: "Blue"
-          default: []
-          selector:
-            action:
-        g3_blue_long:
-          name: "Blue — long press"
-          default: []
-          selector:
-            action:
-        g3_green:
-          name: "Green"
-          default: []
-          selector:
-            action:
-        g3_green_long:
-          name: "Green — long press"
-          default: []
-          selector:
-            action:
         g3_brightness_step_up:
           name: "Brightness +"
           default: []
@@ -328,7 +327,7 @@ blueprint:
           selector:
             action:
         g3_brightness_move_to_level:
-          name: "Brightness — move"
+          name: "Brightness — set to remote level (1–254)"
           default: []
           selector:
             action:
@@ -343,30 +342,34 @@ blueprint:
           selector:
             action:
         g3_color_temperature_move:
-          name: "Color temperature — move"
+          name: "Color temperature — move to remote value"
           default: []
           selector:
             action:
         g3_recall_1:
-          name: "Recall 1"
+          name: "Favorite 1 / Heart 1"
           default: []
           selector:
             action:
         g3_recall_1_long:
-          name: "Recall 1 — long press"
+          name: "Favorite 1 / Heart 1 — long press"
           default: []
           selector:
             action:
         g3_recall_2:
-          name: "Recall 2"
+          name: "Favorite 2 / Heart 2"
           default: []
           selector:
             action:
         g3_recall_2_long:
-          name: "Recall 2 — long press"
+          name: "Favorite 2 / Heart 2 — long press"
           default: []
           selector:
             action:
+variables:
+  eglo_action: "{{ trigger.payload_json.get('action') }}"
+  eglo_group: "{{ trigger.payload_json.get('action_group', 0) | int(0) }}"
+
 triggers:
   - trigger: mqtt
     topic: !input mqtt_topic
@@ -375,334 +378,283 @@ actions:
   - choose:
       - conditions:
           - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'on' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_on
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'off' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_off
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'red' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_red
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'red_long' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_red_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_refresh
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh_long' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_refresh_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh_colored' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_refresh_colored
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh_colored_long' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_refresh_colored_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'blue' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_blue
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'blue_long' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_blue_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'green' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_green
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'green_long' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_green_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'brightness_step_up' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_brightness_step_up
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'brightness_step_down' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_brightness_step_down
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'brightness_move_to_level' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_brightness_move_to_level
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'color_temperature_step_up' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_color_temperature_step_up
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'color_temperature_step_down' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_color_temperature_step_down
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'color_temperature_move' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_color_temperature_move
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_1' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_recall_1
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_1_long' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_recall_1_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_2' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_recall_2
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_2_long' and (trigger.payload_json.action_group | int(0)) == 1 }}
-        sequence: !input g1_recall_2_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'on' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_on
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'off' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_off
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'red' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_red
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'red_long' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_red_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_refresh
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh_long' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_refresh_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh_colored' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_refresh_colored
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh_colored_long' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_refresh_colored_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'blue' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_blue
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'blue_long' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_blue_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'green' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_green
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'green_long' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_green_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'brightness_step_up' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_brightness_step_up
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'brightness_step_down' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_brightness_step_down
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'brightness_move_to_level' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_brightness_move_to_level
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'color_temperature_step_up' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_color_temperature_step_up
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'color_temperature_step_down' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_color_temperature_step_down
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'color_temperature_move' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_color_temperature_move
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_1' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_recall_1
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_1_long' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_recall_1_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_2' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_recall_2
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_2_long' and (trigger.payload_json.action_group | int(0)) == 2 }}
-        sequence: !input g2_recall_2_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'on' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_on
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'off' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_off
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'red' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_red
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'red_long' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_red_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_refresh
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh_long' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_refresh_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh_colored' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_refresh_colored
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'refresh_colored_long' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_refresh_colored_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'blue' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_blue
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'blue_long' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_blue_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'green' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_green
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'green_long' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_green_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'brightness_step_up' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_brightness_step_up
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'brightness_step_down' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_brightness_step_down
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'brightness_move_to_level' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_brightness_move_to_level
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'color_temperature_step_up' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_color_temperature_step_up
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'color_temperature_step_down' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_color_temperature_step_down
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'color_temperature_move' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_color_temperature_move
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_1' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_recall_1
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_1_long' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_recall_1_long
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_2' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_recall_2
-      - conditions:
-          - condition: template
-            value_template: >-
-              {{ trigger.payload_json.action == 'recall_2_long' and (trigger.payload_json.action_group | int(0)) == 3 }}
-        sequence: !input g3_recall_2_long
+            value_template: "{{ eglo_group == 1 }}"
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'on' }}"
+                sequence: !input g1_on
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'off' }}"
+                sequence: !input g1_off
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'red' }}"
+                sequence: !input g1_red
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'red_long' }}"
+                sequence: !input g1_red_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'green' }}"
+                sequence: !input g1_green
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'green_long' }}"
+                sequence: !input g1_green_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'blue' }}"
+                sequence: !input g1_blue
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'blue_long' }}"
+                sequence: !input g1_blue_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh' }}"
+                sequence: !input g1_refresh
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh_long' }}"
+                sequence: !input g1_refresh_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh_colored' }}"
+                sequence: !input g1_refresh_colored
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh_colored_long' }}"
+                sequence: !input g1_refresh_colored_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'brightness_step_up' }}"
+                sequence: !input g1_brightness_step_up
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'brightness_step_down' }}"
+                sequence: !input g1_brightness_step_down
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'brightness_move_to_level' }}"
+                sequence: !input g1_brightness_move_to_level
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'color_temperature_step_up' }}"
+                sequence: !input g1_color_temperature_step_up
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'color_temperature_step_down' }}"
+                sequence: !input g1_color_temperature_step_down
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'color_temperature_move' }}"
+                sequence: !input g1_color_temperature_move
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_1' }}"
+                sequence: !input g1_recall_1
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_1_long' }}"
+                sequence: !input g1_recall_1_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_2' }}"
+                sequence: !input g1_recall_2
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_2_long' }}"
+                sequence: !input g1_recall_2_long
+      - conditions:
+          - condition: template
+            value_template: "{{ eglo_group == 2 }}"
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'on' }}"
+                sequence: !input g2_on
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'off' }}"
+                sequence: !input g2_off
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'red' }}"
+                sequence: !input g2_red
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'red_long' }}"
+                sequence: !input g2_red_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'green' }}"
+                sequence: !input g2_green
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'green_long' }}"
+                sequence: !input g2_green_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'blue' }}"
+                sequence: !input g2_blue
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'blue_long' }}"
+                sequence: !input g2_blue_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh' }}"
+                sequence: !input g2_refresh
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh_long' }}"
+                sequence: !input g2_refresh_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh_colored' }}"
+                sequence: !input g2_refresh_colored
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh_colored_long' }}"
+                sequence: !input g2_refresh_colored_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'brightness_step_up' }}"
+                sequence: !input g2_brightness_step_up
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'brightness_step_down' }}"
+                sequence: !input g2_brightness_step_down
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'brightness_move_to_level' }}"
+                sequence: !input g2_brightness_move_to_level
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'color_temperature_step_up' }}"
+                sequence: !input g2_color_temperature_step_up
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'color_temperature_step_down' }}"
+                sequence: !input g2_color_temperature_step_down
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'color_temperature_move' }}"
+                sequence: !input g2_color_temperature_move
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_1' }}"
+                sequence: !input g2_recall_1
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_1_long' }}"
+                sequence: !input g2_recall_1_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_2' }}"
+                sequence: !input g2_recall_2
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_2_long' }}"
+                sequence: !input g2_recall_2_long
+      - conditions:
+          - condition: template
+            value_template: "{{ eglo_group == 3 }}"
+        sequence:
+          - choose:
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'on' }}"
+                sequence: !input g3_on
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'off' }}"
+                sequence: !input g3_off
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'red' }}"
+                sequence: !input g3_red
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'red_long' }}"
+                sequence: !input g3_red_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'green' }}"
+                sequence: !input g3_green
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'green_long' }}"
+                sequence: !input g3_green_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'blue' }}"
+                sequence: !input g3_blue
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'blue_long' }}"
+                sequence: !input g3_blue_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh' }}"
+                sequence: !input g3_refresh
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh_long' }}"
+                sequence: !input g3_refresh_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh_colored' }}"
+                sequence: !input g3_refresh_colored
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'refresh_colored_long' }}"
+                sequence: !input g3_refresh_colored_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'brightness_step_up' }}"
+                sequence: !input g3_brightness_step_up
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'brightness_step_down' }}"
+                sequence: !input g3_brightness_step_down
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'brightness_move_to_level' }}"
+                sequence: !input g3_brightness_move_to_level
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'color_temperature_step_up' }}"
+                sequence: !input g3_color_temperature_step_up
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'color_temperature_step_down' }}"
+                sequence: !input g3_color_temperature_step_down
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'color_temperature_move' }}"
+                sequence: !input g3_color_temperature_move
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_1' }}"
+                sequence: !input g3_recall_1
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_1_long' }}"
+                sequence: !input g3_recall_1_long
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_2' }}"
+                sequence: !input g3_recall_2
+              - conditions:
+                  - condition: template
+                    value_template: "{{ eglo_action == 'recall_2_long' }}"
+                sequence: !input g3_recall_2_long
 
 mode: parallel
 max: 10
